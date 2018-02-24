@@ -35,19 +35,19 @@ const qoutes = [
     }
     
 ]
-//create random number
+//create random number function
 function getRandomNumber() {
 
-    let randomNumber = Math.floor(Math.random() * 5 ) 
+    let randomNumber = Math.floor(Math.random() * 5 )
+    console.log(randomNumber);
     return randomNumber
 }
-let number = getRandomNumber();
-
-//get the random number's qoute from object
 
 
+//create random number and select qoute for that number after that create random qoute object
 
 function getRandomQoute(){
+    let number = getRandomNumber(); 
     for (var key in qoutes) {
         if (number == key ) {
             var qoute = qoutes[key].qoute;
@@ -66,15 +66,23 @@ function getRandomQoute(){
     return randomQoute;
     }
 
-
+//print random qoute to web site
 function printQuote() {
-  let finalQoute =  getRandomQoute();
-
-    console.log(finalQoute) 
+    let message = ""
+    let finalQoute =  getRandomQoute();
+    let outputDiv = document.getElementById("quote-box");
+    
+    for (let i=0; i<finalQoute.lenght; i ++) {
+        message = finalQoute.qoute 
+    }
+    outputDiv.innerHTML = message
+    console.log(message);
+    console.log(finalQoute.qoute);
 }
 
-printQuote();
 
-//document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 

@@ -1,35 +1,39 @@
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 
-const qoutes = [
+const quotes = [
   
     {
-        qoute: "Every strike brings me closer to the next home run.",
+        quote: "Every strike brings me closer to the next home run.",
         source:  "Babe Ruth",
         year: 2005,
         citation: "New York"
     
     },
     {
-        qoute: "Life is 10% what happens to me and 90% of how I react to it",
+        quote: "Life is 10% what happens to me and 90% of how I react to it",
         source: "Charles Swindoll",
+        year: 2010,
         citation:"London"
     
     },
     {
-        qoute: "Eighty percent of success is showing up.",
+        quote: "Eighty percent of success is showing up.",
         source: "Woody Allen",
+        
         citation:"Paris"
     
     },
     {
-        qoute: "You can never cross the ocean until you have the courage to lose sight of the shore.",
+        quote: "You can never cross the ocean until you have the courage to lose sight of the shore.",
+        
         source:  "Christopher Columbus",
         
     },
     {
-        qoute: "Definiteness of purpose is the starting point of all achievement.",
+        quote: "Definiteness of purpose is the starting point of all achievement.",
         source: "W. Clement Stone",
+        
         citation:"Rome"
     
     }
@@ -44,41 +48,43 @@ function getRandomNumber() {
 }
 
 
-//create random number and select qoute for that number after that create random qoute object
+//create random number and select quote for that number after that create random quote object
 
-function getRandomQoute(){
+function getRandomQuote(){
     let number = getRandomNumber(); 
-    for (var key in qoutes) {
+    for (var key in quotes) {
         if (number == key ) {
-            var qoute = qoutes[key].qoute;
-            var source = qoutes[key].source;
-            var citation = qoutes[key].citation;
-            var year = qoutes[key].year;
+            var quote = quotes[key].quote;
+            var source = quotes[key].source;
+            var citation = quotes[key].citation;
+            var year = quotes[key].year;
            
-            randomQoute = {};
-            randomQoute.qoute = qoute;
-            randomQoute.source = source;
-            randomQoute.citation = citation;
-            randomQoute.year = year;
+            randomQuote = {};
+            randomQuote.quote = quote;
+            randomQuote.source = source;
+            randomQuote.citation = citation;
+            randomQuote.year = year;
              
         }
     };
-    return randomQoute;
+    return randomQuote;
     }
 
-//print random qoute to web site
+//print random quote to web site
 function printQuote() {
-    let message = ""
-    let finalQoute =  getRandomQoute();
-    let outputDiv = document.getElementById("quote-box");
-    
-    for (let i=0; i<finalQoute.lenght; i ++) {
-        message = finalQoute.qoute 
-    }
-    outputDiv.innerHTML = message
-    console.log(message);
-    console.log(finalQoute.qoute);
+    let finalQuote =  getRandomQuote();
+    console.log (finalQuote);
+    const lastQuote = document.querySelector('.quote');
+    lastQuote.innerHTML = `${finalQuote.quote}`;
+    const lastSource = document.querySelector('.source');
+    lastSource.innerHTML = finalQuote.source  
+    if (finalQuote.citation != undefined) { 
+    lastSource.innerHTML += '<span  class="citation">' +finalQuote.citation + '</span>' }
+    if (finalQuote.year != undefined) { 
+    lastSource.innerHTML +=  '<span  class="year">' + finalQuote.year+ '</span>'
+    };
 }
+
 
 
 
